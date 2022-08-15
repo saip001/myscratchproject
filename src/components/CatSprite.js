@@ -1,6 +1,68 @@
-import React from "react";
+import React, { useRef, useState } from "react";
 
-export default function CatSprite() {
+export default function CatSprite(props) {
+  let size=Number(150)+Number(props.size)
+  console.log(size)
+  let rotateValue=props.roatateClockWise-props.roatateAntiClockWise
+  let top=250+props.positionValue[0]
+  let bottom=props.positionValue[1]
+  let right=props.positionValue[2]
+  let left=props.positionValue[3]
+  let topg=props.glidePositionValue[1]
+  let bottomg=props.glidePositionValue[2]
+  let rightg=props.glidePositionValue[3]
+  let leftg=props.glidePositionValue[4]
+  let x=0
+  let y=0
+  let transSecs=props.glidePositionValue[0]
+  if(props.xyArray[0]>670){
+    x=670
+  }
+  else{
+    x=(props.xyArray[0]/10)*10
+  }
+  if(props.xyArray[1]>670){
+    y=670
+  }
+  else{
+    y=(props.xyArray[1]/10)*10
+  }
+  let xg=0
+  let yg=0
+  if(props.glideXYValues[1]>670){
+    xg=670
+  }
+  else{
+    xg=(props.glideXYValues[1]/10)*10
+  }
+  if(props.glideXYValues[2]>670){
+    yg=670
+  }
+  else{
+    yg=(props.glideXYValues[2]/10)*10
+  }
+  console.log(props.glidePositionValue)
+  let display="block"
+  if(props.show===false){
+    display="none"
+  }
+  else if(props.show===true){
+    display="block"
+  }
+const styling={
+  marginLeft:props.marginLeft+left+x+leftg+xg+"px",
+  marginRight:right+rightg+"px",
+  marginTop:top+topg+y+yg+"px",
+  marginBottom:bottom+bottomg+"px",
+  transform :'rotate(' + rotateValue + 'deg)',
+  left: x+"px",
+  top: y+"px",
+  transitionDuration: transSecs+props.glideXYValues[0]+"s",
+  width:size,
+  height:size,
+  display:display
+
+}
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -9,8 +71,13 @@ export default function CatSprite() {
       viewBox="0.3210171699523926 0.3000000357627869 95.17898101806641 100.04156036376953"
       version="1.1"
       xmlSpace="preserve"
+      class="catSpirit"
+      style={styling}
+   
     >
+      
       <g>
+        
         <g id="Page-1" stroke="none" fillRule="evenodd">
           <g id="costume1">
             <g id="costume1.1">

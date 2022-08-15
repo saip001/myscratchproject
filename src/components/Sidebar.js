@@ -1,32 +1,41 @@
-import React from "react";
+import React, { useState } from "react";
 import Icon from "./Icon";
+import SidebarLooks from "./SidebarLooks";
+import SidebarMotion from "./SidebarMotion";
 
-export default function Sidebar() {
+export default function Sidebar(props) {
+  let [value,setValue]=useState("v")
+  let [motionValue,setMotionValue]=useState("v")
+props.setId(value)
+props.setIdMotion(motionValue);
   return (
-    <div className="w-60 flex-none h-full overflow-y-auto flex flex-col items-start p-2 border-r border-gray-200">
-      <div className="font-bold"> {"Events"} </div>
-      <div className="flex flex-row flex-wrap bg-yellow-500 text-white px-2 py-1 my-2 text-sm cursor-pointer">
-        {"When "}
-        <Icon name="flag" size={15} className="text-green-600 mx-2" />
-        {"clicked"}
-      </div>
-      <div className="flex flex-row flex-wrap bg-yellow-500 text-white px-2 py-1 my-2 text-sm cursor-pointer">
-        {"When this sprite clicked"}
-      </div>
-      <div className="font-bold"> {"Motion"} </div>
-      <div className="flex flex-row flex-wrap bg-blue-500 text-white px-2 py-1 my-2 text-sm cursor-pointer">
-        {"Move 10 steps"}
-      </div>
-      <div className="flex flex-row flex-wrap bg-blue-500 text-white px-2 py-1 my-2 text-sm cursor-pointer">
-        {"Turn "}
-        <Icon name="undo" size={15} className="text-white mx-2" />
-        {"15 degrees"}
-      </div>
-      <div className="flex flex-row flex-wrap bg-blue-500 text-white px-2 py-1 my-2 text-sm cursor-pointer">
-        {"Turn "}
-        <Icon name="redo" size={15} className="text-white mx-2" />
-        {"15 degrees"}
-      </div>
+    <div className="w-60 flex-none overflow-y-auto flex flex-col items-start p-2 border-r border-gray-200 px-3 py-3">
+      <SidebarMotion setMotionValue={setMotionValue} setMarginLeft={props.setMarginLeft}  marginLeft={props.marginLeft}
+      roatateClockWise={props.roatateClockWise} roatateAntiClockWise={props.roatateAntiClockWise}
+      setRotateClockWise={props.setRotateClockWise} setRotateAntiClockWise={props.setRotateAntiClockWise}
+      setPositionValue={props.setPositionValue}
+          positionValue={props.positionValue}
+          setxyArray={props.setxyArray}
+          setGlidePositionValue={props.setGlidePositionValue}
+          glidePositionValue={props.glidePositionValue}
+          setGlideXYValues={props.setGlideXYValues}
+      
+      />
+     
+      <SidebarLooks  setValue={setValue} setDisplayCloud={props.setDisplayCloud} setLookMessage={props.setLookMessage}
+       setFadeMessage={props.setFadeMessage}
+       setFadeMessageSec={props.setFadeMessageSec}
+       fadeMessageSec={props.fadeMessageSec}
+       setLookThinkMessage={props.setLookThinkMessage}
+       setFadeThinkMessage={props.setFadeThinkMessage}
+       setFadeThinkMessageSec={props.setFadeThinkMessageSec}
+       setSayFlag={props.setSayFlag}
+       setThinlFlag={props.setThinlFlag}
+       setSize={props.setSize}
+       size={props.size}
+       setShow={props.setShow}
+      />
+    
     </div>
   );
 }
