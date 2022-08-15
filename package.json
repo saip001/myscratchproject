@@ -4,8 +4,9 @@
   "private": true,
   "scripts": {
     "start": "webpack serve --config webpack.dev.js",
-    "build": "webpack --config webpack.prod.js",
-    "heroku-prebuild":"npm install --dev"
+    "heroku-prebuild":"npm install --dev",
+    "build": "webpack --config webpack.prod.js"
+    
   },
   "dependencies": {
     "bootstrap-icons": "^1.9.1",
